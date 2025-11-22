@@ -4,8 +4,8 @@ import styled from 'styled-components';
 import { WindowDropDowns } from 'components';
 import dropDownData from './dropDownData';
 
-export default function Notepad({ onClose }) {
-  const [docText, setDocText] = useState('');
+export default function Notepad({ onClose, defaultText }) {
+  const [docText, setDocText] = useState(defaultText);
   const [wordWrap, setWordWrap] = useState(false);
 
   function onClickOptionItem(item) {
@@ -16,26 +16,30 @@ export default function Notepad({ onClose }) {
       case 'Word Wrap':
         setWordWrap(!wordWrap);
         break;
-      case 'Time/Date':
+      case 'Time/Date': {
         const date = new Date();
+        // dùng prev state cho chắc
         setDocText(
-          `${docText}${date.toLocaleTimeString()} ${date.toLocaleDateString()}`,
+          prev => `${prev}${date.toLocaleTimeString()} ${date.toLocaleDateString()}`,
         );
         break;
+      }
       default:
     }
   }
+
   function onTextAreaKeyDown(e) {
     // handle tabs in text area
     if (e.which === 9) {
       e.preventDefault();
       e.persist();
-      var start = e.target.selectionStart;
-      var end = e.target.selectionEnd;
-      setDocText(`${docText.substring(0, start)}\t${docText.substring(end)}`);
+      const start = e.target.selectionStart;
+      const end = e.target.selectionEnd;
 
-      // asynchronously update textarea selection to include tab
-      // workaround due to https://github.com/facebook/react/issues/14174
+      setDocText(
+        prev => `${prev.substring(0, start)}\t${prev.substring(end)}`,
+      );
+
       requestAnimationFrame(() => {
         e.target.selectionStart = start + 1;
         e.target.selectionEnd = start + 1;

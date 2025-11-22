@@ -248,11 +248,13 @@ export const appSettings = {
       x: 270,
       y: 60,
     },
+    defaultText: `Ghi chú lần trước:\n- Item 1\n- Item 2`,
     resizable: true,
     minimized: false,
     maximized: window.innerWidth < 800,
     multiInstance: true,
   },
+
   Winamp: {
     header: {
       icon: winamp,

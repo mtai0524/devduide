@@ -339,7 +339,7 @@ function MyComputer({ onClose }) {
               </div>
               <div className="com__content__right__card__content">
                 <a
-                  href="https://github.com/ShizukuIchi"
+                  href="https://github.com/mtai0524"
                   target="_blank"
                   rel="noreferrer"
                   className="com__content__right__card__item--me"
@@ -359,7 +359,7 @@ function MyComputer({ onClose }) {
                 >
                   <img
                     className="com__content__right__card__img"
-                    src="https://a.ppy.sh/2926513_1448497605.png"
+                    src="https://res.cloudinary.com/dl3hvap4a/image/upload/v1763819831/mc9yazpmfn6ckdrtdjf0.jpg"
                     alt="control"
                   />
                   <div className="com__content__right__card__text">
